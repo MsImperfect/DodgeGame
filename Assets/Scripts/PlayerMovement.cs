@@ -7,22 +7,24 @@ public class PlayerMovement : MonoBehaviour
     public float sidewaysForce = 10f;
     public float smoothness = 5f;
     public float jumpForce = 9f;
-
+    public float jumpGrav;
+    public float fallGrav;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
     public bool gameOver = false;
 
     private bool isGrounded;
-
+    private void Start()
+    {
+        rb.useGravity = false;
+    }
     void Update()
     {
         if (gameOver) return;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
         {
             Jump();
         }
@@ -32,6 +34,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gameOver) return;
 
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector3.down * fallGrav;
+        }
+        else
+        {
+            rb.linearVelocity += Vector3.down * jumpGrav;
+        }
         speed = GameManager.Instance.gameSpeed;
         sidewaysForce = GameManager.Instance.sidewaysForce;
 
@@ -42,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = 0f;
 
-        if (Input.GetKey(KeyCode.A)) horizontalInput = -1f;
-        if (Input.GetKey(KeyCode.D)) horizontalInput = 1f;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) horizontalInput = -1f;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) horizontalInput = 1f;
 
         Vector3 targetVelocity = new Vector3(horizontalInput * sidewaysForce, rb.linearVelocity.y, speed);
         rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.fixedDeltaTime * smoothness);
