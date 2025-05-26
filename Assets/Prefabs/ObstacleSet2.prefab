@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4169c8c716db6c240b49f67eb9f642f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: -10
+  length: -5
 --- !u!1001 &1523314354368680391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,8 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!1001 &4491139221926635767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,8 +281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!4 &4168365329812000540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 156bfe7115c9a19459a62cbeec9134cc, type: 3}
@@ -401,8 +405,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!1001 &4879317190595255539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -518,8 +524,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!1001 &5609707312921737025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,8 +638,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!4 &5355649022606512298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 156bfe7115c9a19459a62cbeec9134cc, type: 3}
@@ -752,8 +762,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!1001 &7902277247578228750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -864,8 +876,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riseHeight: 3
-  riseSpeed: 2
+  riseSpeed: 3
   delayBeforeRise: 1.5
+  isGameOverUI: 0
+  player: {fileID: 0}
 --- !u!4 &7647180562954727397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 156bfe7115c9a19459a62cbeec9134cc, type: 3}

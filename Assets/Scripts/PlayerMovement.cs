@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         sidewaysForce = GameManager.Instance.sidewaysForce;
 
         Move();
+
+        if(rb.position.y < -70)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
     void Move()

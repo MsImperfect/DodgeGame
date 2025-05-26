@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using TMPro;
 using System.IO;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class GameManager : MonoBehaviour
     public float gameSpeedIncrease = 0.2f;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
+    public TextMeshProUGUI gameOverText;
+    public GameObject gameOverParent;
+    public Button retryButton;
 
     private float score;
     private int highScore;
@@ -33,7 +38,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         filePath = Application.persistentDataPath + "/HighScore.json";
-        NewGame();
+        gameOverParent.SetActive(false);
+        score = 0;
+        retryButton.gameObject.SetActive(false);
+        LoadHighScore();
     }
 
     // Update is called once per frame
@@ -50,7 +58,22 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        LoadHighScore();
+        Debug.Log("NewGame triggered");
+        score = 0;
+        Time.timeScale = 1f; // Just in case it was paused
+        SceneManager.LoadScene("Game");
+        //gameSpeed = 20f;
+        //sidewaysForce = 18f;
+        //player.gameOver = false;
+        //player.rb.isKinematic = false;
+        //player.transform.position = new Vector3(0, 1.4f, 5); 
+        //player.rb.linearVelocity = Vector3.zero;
+        //player.rb.angularVelocity = Vector3.zero;
+        //gameOverText.enabled = false;
+        //gameOverParent.SetActive(false);
+        //retryButton.gameObject.SetActive(false);
+        //LoadHighScore();
+        //Time.timeScale = 1f;
     }
 
     public void GameOver()
@@ -59,6 +82,9 @@ public class GameManager : MonoBehaviour
         sidewaysForce = 0f;
         player.gameOver = true;
         player.rb.isKinematic = true;
+        gameOverText.enabled=true;
+        gameOverParent.SetActive(true);
+        retryButton.gameObject.SetActive(true);
         UpdateHighScore();
     }
 
@@ -78,8 +104,8 @@ public class GameManager : MonoBehaviour
         HighScoreData data = new HighScoreData { highScore = highScore };
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(filePath, json);
-        highScoreText.text = "HighScore: " + highScore;
-        Debug.Log("High Score Saved: " + highScore);
+        highScoreText.text = "TopScore: " + highScore;
+        Debug.Log("Top Score Saved: " + highScore);
     }
 
     private void LoadHighScore()
@@ -94,7 +120,7 @@ public class GameManager : MonoBehaviour
         {
             highScore = 0;
         }
-        highScoreText.text = "HighScore: " + highScore;
+        highScoreText.text = "TopScore: " + highScore;
     }
 
     [System.Serializable]
